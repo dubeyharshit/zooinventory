@@ -29,7 +29,11 @@ public class ZooInventoryMain {
 				break;
 				
 			case 2:
-				
+				System.out.println("Options\n1. Wastage per	zoo\n2. Species of animal at which zoos are being fed above/below "
+						+ "average by species by given percentage\nEnter your choice");
+				option2 = in.nextInt();
+				getStats(option2);
+				break;
 			case 3:
 				isExit = true;
 				System.out.println("Thank You For Using Inventory System");
@@ -56,6 +60,23 @@ public class ZooInventoryMain {
 		default:
 			System.out.println("Wrong Option Please try Again");
 
+		}
+	}
+	
+	private static void getStats(int option) {
+		switch (option) {
+		case 1:
+			Operations.getFoodWastagePerZoo();
+			break;
+		case 2:
+			System.out.println("Enter percentage value: ");
+			double percent = in.nextDouble();
+			System.out.println("Animals above (1) or below (2) this percent?:");
+			int isAboveOrBelow = in.nextInt();
+			Operations.getAnimalFeedStat(zooId, percent, isAboveOrBelow);
+			break;
+		default:
+			System.out.println("Wrong Option Please try Again");
 		}
 	}
 }
